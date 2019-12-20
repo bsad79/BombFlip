@@ -8,6 +8,8 @@ body{
     margin: 0;
     height: 100vh;
     font-size: 200%;
+    overflow-y:hidden;
+    position: relative;
 }
 
 table{
