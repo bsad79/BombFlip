@@ -8,20 +8,6 @@ body{
     margin: 0;
     height: 100vh;
     font-size: 200%;
-    overflow-y:hidden;
-    position: relative;
-}
-
-table{
-    height: 80vh;
-    width: 100%;
-}
-
-.box{
-    color: #4717f6;
-    background-color: #4717f6;
-    height: 10%;
-    width: 10%;
 }
 
 .placar{
@@ -33,19 +19,67 @@ table{
     height: 20vh;
 }
 
+table{
+    height: 80vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+td{
+    padding: 0;
+}
+
+.box{
+    color: #4717f6;
+    background-color: #4717f6;
+    height: 9vh;
+    width: 10%;
+    border: 0.3vh solid black;
+}
+
 .flipped{
     color: #e7efdd;
     background-color: #a239ca;
-    height: 10%;
+    height: 9vh;
     width: 10%;
     text-align: center;
+    border: 0.5vh solid black;
 }
 
 .aux{
     background-color: #e7efdd;
-    height: 10%;
+    height: 9vh;
     width: 10%;
     text-align: center;
+    justify-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    border: 0.3vh solid black;
+}
+
+.subT{
+    background-color: #e7efdd;
+    height: auto;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    margin-left:auto;
+    margin-right:auto;
+    border-collapse: collapse;
+}
+
+.subTLine {
+    border-bottom: solid black;
+    text-align: center;
+}
+
+.bomb{
+    background-image: url("bomb.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    width: 50%;
 }
 
 .modal{

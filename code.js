@@ -53,7 +53,6 @@ function flip(e)
             score = 0;
             cardsF = 0;
             difficultLvl = 1;
-            ScoreUpadte();
             Lmodal.style.display = "block";
         }
         if(e.target.textContent == 1)
@@ -85,7 +84,6 @@ function flip(e)
             score = 0;
             cardsF = 0;
             difficultLvl = 1;
-            ScoreUpadte();
             Lmodal.style.display = "block";
         }
         if(e.target.textContent == 1)
@@ -136,8 +134,20 @@ for (let i = 0; i < 6; i++)
             let sum = 0;
             let Zcount = 0;
             let td = document.createElement("td");
+
+            let SubTable = document.createElement("table");
+            let SubTable2 = document.createElement("table");
+            let trSUM = document.createElement("tr");
+            let tdBomb = document.createElement("td");
+            let tdBomb2 = document.createElement("td");
+
             td.setAttribute("class", "aux");
             td.setAttribute("id",n);
+            SubTable.setAttribute("class", "subT");
+            SubTable2.setAttribute("class", "subT");
+            trSUM.setAttribute("class", "subTLine");
+            tdBomb.setAttribute("class", "bomb");
+            tdBomb2.setAttribute("style", "padding: 0;");
 
             let trc = table.childNodes;
             for (let q = 0; q < trc.length; q++)
@@ -153,11 +163,15 @@ for (let i = 0; i < 6; i++)
                 }
             }
             txt = document.createTextNode(sum);
-            txt2 = document.createTextNode(" / ");
-            txt3 = document.createTextNode(Zcount);
-            td.appendChild(txt);
-            td.appendChild(txt2);
-            td.appendChild(txt3);
+            txt2 = document.createTextNode(Zcount);
+            trSUM.appendChild(txt);
+            tdBomb2.appendChild(txt2);
+            SubTable.appendChild(trSUM);
+            SubTable2.appendChild(tdBomb);
+            SubTable2.appendChild(tdBomb2);
+
+            td.appendChild(SubTable);
+            td.appendChild(SubTable2);
 
             tr.appendChild(td);
         }
@@ -171,14 +185,31 @@ for (let i = 0; i < 6; i++)
             if(n==5)
             {
                 let td = document.createElement("td");
+                let SubTable = document.createElement("table");
+                let SubTable2 = document.createElement("table");
+                let trSUM = document.createElement("tr");
+                let tdBomb = document.createElement("td");
+                let tdBomb2 = document.createElement("td");
+
                 td.setAttribute("class", "aux");
                 td.setAttribute("id",n);
+                SubTable.setAttribute("class", "subT");
+                SubTable2.setAttribute("class", "subT");
+                trSUM.setAttribute("class", "subTLine");
+                tdBomb.setAttribute("class", "bomb");
+                tdBomb2.setAttribute("style", "padding: 0;");
+
                 txt = document.createTextNode(sum);
-                txt2 = document.createTextNode(" / ");
-                txt3 = document.createTextNode(Zcount);
-                td.appendChild(txt);
-                td.appendChild(txt2);
-                td.appendChild(txt3);
+                txt2 = document.createTextNode(Zcount);
+                trSUM.appendChild(txt);
+                tdBomb2.appendChild(txt2);
+                SubTable.appendChild(trSUM);
+                SubTable2.appendChild(tdBomb);
+                SubTable2.appendChild(tdBomb2);
+
+                td.appendChild(SubTable);
+                td.appendChild(SubTable2);
+
                 tr.appendChild(td);
                 sum = 0;
             }
