@@ -218,8 +218,6 @@ function markWindow(e)
     if(markBoxV == true)
     {
         markBox.removeChild(markBox.firstChild)
-        var text = document.createTextNode("Mark");
-        markBox.appendChild(text);
         markBox.setAttribute("class", "mark");
         markBoxV = false;
     }
@@ -232,7 +230,6 @@ function markWindow(e)
 function mark(e)
 {
     Mmodal.style.display = "none";
-    markBox.removeChild(markBox.firstChild)
     let text = document.createTextNode(e.target.textContent);
     markBox.appendChild(text);
     if(e.target.textContent == 0)
@@ -273,10 +270,8 @@ for (let i = 0; i < 6; i++)
             if(n==5)
             {
                 let td = document.createElement("td");
-                txt = document.createTextNode("Mark");
                 td.setAttribute("class", "mark");
                 td.setAttribute("onclick", "markWindow(event)");
-                td.appendChild(txt);
                 tr.appendChild(td);
             }
             else

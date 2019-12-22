@@ -17,7 +17,7 @@ body{
     color: #e7efdd;
     text-align: center;
     vertical-align: middle;
-    font-size: 300%;
+    font-size: 250%;
     height: 10vh;
 }
 
@@ -94,10 +94,11 @@ td{
     text-align: center;
     border: solid black;
     max-width: 5vh;
-}
-
-.mark a{
-    transform: rotate(45deg);
+    vertical-align: middle;
+    background-image: url("pencil.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
 }
 
 .markSelcted{
