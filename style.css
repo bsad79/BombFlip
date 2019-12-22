@@ -199,7 +199,8 @@ td{
 .modal-content{
     background-color: #fefefe;
     margin: 10% auto;
-    padding: 20px;
+    margin-top: 30%;
+    padding: 2%;
     border: 1px solid #888;
     max-height: 70%;
     width: 80%;
