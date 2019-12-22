@@ -10,15 +10,15 @@ body{
     overflow: hidden;
     height: 100vh;
     font-size: 150%;
+    padding-bottom: 10vh;
 }
 
 .placar{
-    background-color: #4717f6;
     color: #e7efdd;
     text-align: center;
     vertical-align: middle;
     font-size: 350%;
-    height: 20vh;
+    height: 10vh;
 }
 
 table{
