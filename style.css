@@ -36,6 +36,7 @@ td{
     height: 9vh;
     width: 10%;
     border: 0.3vh solid black;
+    position: relative;
 }
 
 .flipped{
@@ -44,6 +45,18 @@ td{
     height: 9vh;
     width: 10%;
     text-align: center;
+    border: 0.5vh solid black;
+}
+
+.Fbomb{
+    background-image: url("bomb.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    height: 9vh;
+    width: 10%;
+    color: transparent;
+    background-color: #a239ca;
     border: 0.5vh solid black;
 }
 
@@ -74,6 +87,87 @@ td{
     text-align: center;
 }
 
+.mark{
+    background-color: #7700ff;
+    text-align: center;
+    border: solid black;
+}
+
+.markSelcted{
+    background-color: lightgray;
+    color: rgb(237,28,36);
+    text-align: center;
+    border: solid black;
+}
+
+.markOpt{
+    text-align: center;
+    vertical-align: middle;
+    max-height: 50px;
+    max-width: 50%;
+    font-size: 200%;
+    color: rgb(237,28,36);
+}
+
+.markOpt:hover{
+    background-color: lightgray;
+}
+
+.markOpt:active{
+    background-color: rgb(121, 116, 116);
+}
+
+.Mbomb{
+    background-image: url("MarkBomb.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+}
+
+.mb{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    height: 45%;
+    width: 45%;
+    background-image: url("MarkBomb.png");
+    color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    pointer-events:none
+}
+
+.m1{
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    color: rgb(237,28,36);
+    background-color: transparent;
+    z-index: 3;
+    pointer-events:none
+}
+
+.m2{
+    position: absolute;
+    bottom: 1%;
+    left: 1%;
+    color: rgb(237,28,36);
+    background-color: transparent;
+    z-index: 3;
+    pointer-events:none
+}
+
+.m3{
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+    color: rgb(237,28,36);
+    background-color: transparent;
+    z-index: 3;
+    pointer-events:none
+}
+
 .bomb{
     background-image: url("bomb.png");
     background-repeat: no-repeat;
@@ -83,36 +177,37 @@ td{
 }
 
 .modal{
-display: none; 
-position: fixed;
-z-index: 1;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-overflow: auto;
-background-color: rgb(0,0,0);
-background-color: rgba(0,0,0,0.4);
+    display: none; 
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content{
-background-color: #fefefe;
-margin: 15% auto;
-padding: 20px;
-border: 1px solid #888;
-width: 80%;
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-height: 70%;
+    width: 80%;
 }
 
 .close{
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus{
-color: black;
-text-decoration: none;
-cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
