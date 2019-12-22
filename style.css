@@ -7,7 +7,7 @@ html{
 body{
     margin: 0;
     height: 100vh;
-    font-size: 200%;
+    font-size: 150%;
 }
 
 .placar{
@@ -91,7 +91,11 @@ td{
     background-color: #7700ff;
     text-align: center;
     border: solid black;
-    width: 10%;
+    max-width: 5vh;
+}
+
+.mark a{
+    transform: rotate(45deg);
 }
 
 .markSelcted{
