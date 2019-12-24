@@ -43,6 +43,41 @@
             </div>
         </div>
 
+        <div id="Tmodal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="tmodalClose()">&times;</span>
+                <h1>How to play</h1>
+                <p>BombFlip is a game in wich you flip over cards to find numbers hidden beneath them.</p>
+                <p>The cards are hiding the numbers 1 through 3... and bombs as well.</p>
+                <p>The first number you flip over will give you that many points.</p>
+                <p>From them on, the number you find will multiply the total amount of points you've collected by 
+                    that number.
+                </p>
+                <p>If it's a 2, your total will be multiplied by "x2".</p>
+                <p>If it's a 3, your total will be multiplied by "x3".</p>
+                <p>But if you flip over a bomb, it's game over.</p>
+                <p>When that happens, you'll lose all the points you've collected in the corrent game.</p>
+                <p>Once you've found all the hidden 2 and 3 cards, you've cleared the game and will advance to the 
+                    next level of difficulty.
+                </p>
+                <p>As the difficulty increases, you will be able to receive more points. Do your best!</p>
+                <br>
+                <p>The numbers at the side of the board will give you a clue about the numbers hidden on the back 
+                    of the panels.</p>
+                <p>The larger the number, the more likely it is that there are many large numbers hidden in that 
+                    row or column.</p>
+                <p>In the same way, you can tell how many bombs are hidden in the row or column.</p>
+                <p>Consider the hidden number totals and the bombs totals carefully as you flip over panels.</p>
+            </div>
+        </div>
+
+        <div id="menu">
+            <h1>BombFlip</h1>
+            <button onclick="play()">Play</button>
+            <br><br>
+            <button onclick="tmodalShow()">Tutorial</button>
+        </div>
+
         <script src="code.js"></script>
     </body>
 </html>

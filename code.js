@@ -1,5 +1,6 @@
 var body = document.getElementById("body");
 var placar = document.createElement("div");
+var Tmodal = document.getElementById("Tmodal");
 var Vmodal = document.getElementById("Vmodal");
 var Lmodal = document.getElementById("Lmodal");
 var Mmodal = document.getElementById("Mmodal");
@@ -37,20 +38,30 @@ function difficultCheck()
     }
 }
 
+function tmodalShow()
+{
+    Tmodal.style.display = "block";
+}
+
+function tmodalClose()
+{
+    Tmodal.style.display = "none";
+}
+
 Vspan.onclick = function()
 {
     Vmodal.style.display = "none";
     difficultLvl += 1;
-    difficultCheck()
+    difficultCheck();
     tableRemove();
-    console.log(difficultLvl);
 }
 
 Lspan.onclick = function()
 {
     Lmodal.style.display = "none";
     difficultLvl = 0;
-    document.location.reload(true)
+    difficultCheck();
+    tableRemove();
 }
 
 Mspan.onclick = function()
@@ -525,7 +536,12 @@ function tableRemove()
     tableMake();
 }
 
-body.appendChild(placar);
+function play()
+{
+    let menu = document.getElementById("menu");
+    menu.parentNode.removeChild(menu);
+    body.appendChild(placar);
 
-difficultCheck();
-tableMake();
+    difficultCheck();
+    tableMake();
+}
