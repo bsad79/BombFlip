@@ -59,7 +59,7 @@ Vspan.onclick = function()
 Lspan.onclick = function()
 {
     Lmodal.style.display = "none";
-    difficultLvl = 0;
+    difficultLvl = 1;
     difficultCheck();
     tableRemove();
 }
