@@ -1,5 +1,5 @@
 var body = document.getElementById("body");
-var table = document.createElement("table");
+var placar = document.createElement("div");
 var Vmodal = document.getElementById("Vmodal");
 var Lmodal = document.getElementById("Lmodal");
 var Mmodal = document.getElementById("Mmodal");
@@ -8,29 +8,48 @@ var Lspan = document.getElementsByClassName("close")[1];
 var Mspan = document.getElementsByClassName("close")[2];
 var markBox;
 var markBoxV = false;
-
-var placar = document.createElement("div");
-placar.setAttribute("class", "placar");
-
 let difficultLvl = 1;
+let grid;
 let cardsF = 0;
 let score = 0;
 let OneCount = 0;
 let TwoCount = 0;
 let ThreeCount = 0;
 
+placar.setAttribute("class", "placar");
 var text = document.createTextNode(score);
 placar.appendChild(text);
+
+function difficultCheck()
+{
+    if(difficultLvl < 5)
+    {
+        grid = 6;
+    }
+    if(difficultLvl > 4 && difficultLvl < 7)
+    {
+        grid = 8;
+    }
+    if(difficultLvl > 6)
+    {
+        body.style.fontSize = "115%";
+        grid = 11;
+    }
+}
 
 Vspan.onclick = function()
 {
     Vmodal.style.display = "none";
-    document.location.reload(true)
+    difficultLvl += 1;
+    difficultCheck()
+    tableRemove();
+    console.log(difficultLvl);
 }
 
 Lspan.onclick = function()
 {
     Lmodal.style.display = "none";
+    difficultLvl = 0;
     document.location.reload(true)
 }
 
@@ -47,7 +66,6 @@ function ScoreUpadte()
     if(ThreeCount == 0 && TwoCount == 0)
     {
         Vmodal.style.display = "block";
-        difficultLvl += 1;
     }
 }
 
@@ -243,157 +261,271 @@ function mark(e)
     markBoxV = true;
 }
 
-function valueCalc()
+function valueCalc(Zcount)
 {
     let value; 
     if(difficultLvl == 1)
     {
-        value = Math.floor(Math.random() * 3);
+        if(Zcount == 1)
+        {
+            value = Math.floor(Math.random() * 1.2) + 1;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 2.2);
+        }
     }
-    else
+    if(difficultLvl == 2)
     {
-        value = Math.round(Math.random() * 3);
+        if(Zcount == 1)
+        {
+            value = Math.floor(Math.random() * 1.5) + 1;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 2.5);
+        }
+    }
+    if(difficultLvl == 3)
+    {
+        if(Zcount == 2)
+        {
+            value = Math.floor(Math.random() * 2.2) + 1;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 3.2);
+        }
+    }
+    if(difficultLvl == 4)
+    {
+        if(Zcount == 3)
+        {
+            value = Math.floor(Math.random() * 2.5) + 1;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 3.5);
+        }
+    }
+    if(difficultLvl == 5)
+    {
+        if(Zcount == 5)
+        {
+            value = Math.floor(Math.random() * 2.5) + 1;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 3.5);
+        }
+    }
+    if(difficultLvl == 6)
+    {
+        if(Zcount < 4)
+        {
+            value = Math.floor(Math.random() * 1.5);
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 3.5);
+        }
+    }
+    if(difficultLvl == 7)
+    {
+        if(Zcount == 7)
+        {
+            value = Math.floor(Math.random() * 2.5) + 1;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 3.5);
+        }
+    }
+    if(difficultLvl == 8)
+    {
+        if(Zcount == 8)
+        {
+            value = Math.floor(Math.random() * 1.2) + 2;
+        }
+        else
+        {
+            value = Math.floor(Math.random() * 3.5);
+            if(value == 1)
+            {
+                value = 0;
+            }
+        }
+    }
+    if(difficultLvl == 9)
+    {
+        value = Math.floor(Math.random() * 3.5);
+        if(value == 1)
+        {
+            value = 0;
+        }
+    }
+    if(difficultLvl == 10)
+    {
+        value = Math.floor(Math.random() * 3.5);
+        if(value == 1)
+        {
+            value = 0;
+        }
     }
     return value;
 }
 
-//table creation
-for (let i = 0; i < 6; i++)
+function tableMake()
 {
-    let tr = document.createElement("tr");
-    tr.setAttribute("id", i);
+    var table = document.createElement("table");
+    table.setAttribute("id", "table");
 
-    if(i==5)
+    for (let i = 0; i < grid; i++)
     {
-        for (let n = 0; n < 6; n++)
+        let tr = document.createElement("tr");
+        tr.setAttribute("id", i);
+
+        if(i==(grid-1))
         {
-            if(n==5)
+            for (let n = 0; n < grid; n++)
             {
-                let td = document.createElement("td");
-                td.setAttribute("class", "mark");
-                td.setAttribute("onclick", "markWindow(event)");
-                tr.appendChild(td);
-            }
-            else
-            {
-                let sum = 0;
-                let Zcount = 0;
-                let td = document.createElement("td");
-
-                let SubTable = document.createElement("table");
-                let SubTable2 = document.createElement("table");
-                let trSUM = document.createElement("tr");
-                let tdBomb = document.createElement("td");
-                let tdBomb2 = document.createElement("td");
-
-                td.setAttribute("class", "aux");
-                td.setAttribute("id",n);
-                SubTable.setAttribute("class", "subT");
-                SubTable2.setAttribute("class", "subT");
-                trSUM.setAttribute("class", "subTLine");
-                tdBomb.setAttribute("class", "bomb");
-                tdBomb2.setAttribute("style", "padding: 0;");
-
-                let trc = table.childNodes;
-                for (let q = 0; q < trc.length; q++)
+                if(n==(grid-1))
                 {
-                    var value = parseInt(trc[q].childNodes[n].textContent)
+                    let td = document.createElement("td");
+                    td.setAttribute("class", "mark");
+                    td.setAttribute("onclick", "markWindow(event)");
+                    tr.appendChild(td);
+                }
+                else
+                {
+                    let sum = 0;
+                    let Zcount = 0;
+                    let td = document.createElement("td");
+
+                    let SubTable = document.createElement("table");
+                    let SubTable2 = document.createElement("table");
+                    let trSUM = document.createElement("tr");
+                    let tdBomb = document.createElement("td");
+                    let tdBomb2 = document.createElement("td");
+
+                    td.setAttribute("class", "aux");
+                    td.setAttribute("id",n);
+                    SubTable.setAttribute("class", "subT");
+                    SubTable2.setAttribute("class", "subT");
+                    trSUM.setAttribute("class", "subTLine");
+                    tdBomb.setAttribute("class", "bomb");
+                    tdBomb2.setAttribute("style", "padding: 0;");
+
+                    let trc = table.childNodes;
+                    for (let q = 0; q < trc.length; q++)
+                    {
+                        var value = parseInt(trc[q].childNodes[n].textContent)
+                        if(value == 0)
+                        {
+                            Zcount += 1;
+                        }
+                        else
+                        {
+                            sum += value;
+                        }
+                    }
+                    txt = document.createTextNode(sum);
+                    txt2 = document.createTextNode(Zcount);
+                    trSUM.appendChild(txt);
+                    tdBomb2.appendChild(txt2);
+                    SubTable.appendChild(trSUM);
+                    SubTable2.appendChild(tdBomb);
+                    SubTable2.appendChild(tdBomb2);
+
+                    td.appendChild(SubTable);
+                    td.appendChild(SubTable2);
+
+                    tr.appendChild(td);
+                }
+            }
+        }
+        else
+        {
+            let Zcount = 0;
+            let sum = 0;
+            for (let n = 0; n < grid; n++)
+            {
+                if(n==(grid-1))
+                {
+                    let td = document.createElement("td");
+                    let SubTable = document.createElement("table");
+                    let SubTable2 = document.createElement("table");
+                    let trSUM = document.createElement("tr");
+                    let tdBomb = document.createElement("td");
+                    let tdBomb2 = document.createElement("td");
+
+                    td.setAttribute("class", "aux");
+                    td.setAttribute("id",n);
+                    SubTable.setAttribute("class", "subT");
+                    SubTable2.setAttribute("class", "subT");
+                    trSUM.setAttribute("class", "subTLine");
+                    tdBomb.setAttribute("class", "bomb");
+                    tdBomb2.setAttribute("style", "padding: 0;");
+
+                    txt = document.createTextNode(sum);
+                    txt2 = document.createTextNode(Zcount);
+                    trSUM.appendChild(txt);
+                    tdBomb2.appendChild(txt2);
+                    SubTable.appendChild(trSUM);
+                    SubTable2.appendChild(tdBomb);
+                    SubTable2.appendChild(tdBomb2);
+
+                    td.appendChild(SubTable);
+                    td.appendChild(SubTable2);
+
+                    tr.appendChild(td);
+                    sum = 0;
+                }
+                else
+                {
+                    let td = document.createElement("td");
+                    td.setAttribute("class", "box");
+                    td.setAttribute("id", n);
+                    var value = valueCalc(Zcount);
+                    let txt = document.createTextNode(value);
                     if(value == 0)
                     {
                         Zcount += 1;
                     }
-                    else
+                    if(value == 1)
                     {
+                        OneCount += 1;
                         sum += value;
                     }
-                }
-                txt = document.createTextNode(sum);
-                txt2 = document.createTextNode(Zcount);
-                trSUM.appendChild(txt);
-                tdBomb2.appendChild(txt2);
-                SubTable.appendChild(trSUM);
-                SubTable2.appendChild(tdBomb);
-                SubTable2.appendChild(tdBomb2);
-
-                td.appendChild(SubTable);
-                td.appendChild(SubTable2);
-
-                tr.appendChild(td);
+                    if(value == 2)
+                    {
+                        TwoCount += 1;
+                        sum += value;
+                    }
+                    if(value == 3)
+                    {
+                        ThreeCount += 1;
+                        sum += value;
+                    }
+                    td.appendChild(txt);
+                    td.setAttribute("onclick", "flip(event)");
+                    tr.appendChild(td);
+                } 
             }
         }
+
+        table.appendChild(tr);
     }
-    else
-    {
-        let Zcount = 0;
-        let sum = 0;
-        for (let n = 0; n < 6; n++)
-        {
-            if(n==5)
-            {
-                let td = document.createElement("td");
-                let SubTable = document.createElement("table");
-                let SubTable2 = document.createElement("table");
-                let trSUM = document.createElement("tr");
-                let tdBomb = document.createElement("td");
-                let tdBomb2 = document.createElement("td");
+    body.appendChild(table);
+}
 
-                td.setAttribute("class", "aux");
-                td.setAttribute("id",n);
-                SubTable.setAttribute("class", "subT");
-                SubTable2.setAttribute("class", "subT");
-                trSUM.setAttribute("class", "subTLine");
-                tdBomb.setAttribute("class", "bomb");
-                tdBomb2.setAttribute("style", "padding: 0;");
-
-                txt = document.createTextNode(sum);
-                txt2 = document.createTextNode(Zcount);
-                trSUM.appendChild(txt);
-                tdBomb2.appendChild(txt2);
-                SubTable.appendChild(trSUM);
-                SubTable2.appendChild(tdBomb);
-                SubTable2.appendChild(tdBomb2);
-
-                td.appendChild(SubTable);
-                td.appendChild(SubTable2);
-
-                tr.appendChild(td);
-                sum = 0;
-            }
-            else
-            {
-                let td = document.createElement("td");
-                td.setAttribute("class", "box");
-                td.setAttribute("id", n);
-                var value = valueCalc();
-                let txt = document.createTextNode(value);
-                if(value == 0)
-                {
-                    Zcount += 1;
-                }
-                if(value == 1)
-                {
-                    OneCount += 1;
-                    sum += value;
-                }
-                if(value == 2)
-                {
-                    TwoCount += 1;
-                    sum += value;
-                }
-                if(value == 3)
-                {
-                    ThreeCount += 1;
-                    sum += value;
-                }
-                td.appendChild(txt);
-                td.setAttribute("onclick", "flip(event)");
-                tr.appendChild(td);
-            } 
-        }
-    }
-
-    table.appendChild(tr);
+function tableRemove()
+{
+    table.parentNode.removeChild(table);
+    tableMake();
 }
 
 body.appendChild(placar);
-body.appendChild(table);
+
+difficultCheck();
+tableMake();

@@ -35,7 +35,7 @@ td{
 .box{
     color: #4717f6;
     background-color: #4717f6;
-    height: 9vh;
+    height: 7vh;
     width: 10%;
     border: 0.3vh solid black;
     position: relative;
@@ -44,10 +44,10 @@ td{
 .flipped{
     color: #e7efdd;
     background-color: #a239ca;
-    height: 9vh;
+    height: 7vh;
     width: 10%;
     text-align: center;
-    border: 0.5vh solid black;
+    border: 0.3vh solid black;
 }
 
 .Fbomb{
@@ -55,7 +55,7 @@ td{
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: center;
-    height: 9vh;
+    height: 7vh;
     width: 10%;
     color: transparent;
     background-color: #a239ca;
@@ -64,7 +64,7 @@ td{
 
 .aux{
     background-color: #e7efdd;
-    height: 9vh;
+    height: 7vh;
     width: 10%;
     text-align: center;
     justify-content: center;
@@ -199,8 +199,7 @@ td{
 
 .modal-content{
     background-color: #fefefe;
-    margin: 10% auto;
-    margin-top: 30%;
+    margin: 20% auto;
     padding: 2%;
     border: 1px solid #888;
     max-height: 70%;
