@@ -60,6 +60,7 @@ Lspan.onclick = function()
 {
     Lmodal.style.display = "none";
     difficultLvl = 1;
+    ScoreUpadte();
     difficultCheck();
     tableRemove();
 }
