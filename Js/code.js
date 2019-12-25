@@ -66,9 +66,9 @@ Lspan.onclick = function()
     Lmodal.style.display = "none";
     difficultLvl = 1;
     OneCount = 0;
+    ScoreUpadte();
     TwoCount = 0;
     ThreeCount = 0;
-    ScoreUpadte();
     difficultCheck();
     tableRemove();
 }
@@ -243,14 +243,16 @@ function flip(e)
             if(e.target.textContent == 2)
             {
                 FlipSFX.play();
-                score *= 2;
+                score += 2;
+                cardsF += 1;
                 TwoCount -= 1;
                 ScoreUpadte();
             }
             if(e.target.textContent == 3)
             {
                 FlipSFX.play();
-                score *= 3;
+                score += 3;
+                cardsF += 1;
                 ThreeCount -= 1;
                 ScoreUpadte();
             }
