@@ -7,6 +7,8 @@ var Mmodal = document.getElementById("Mmodal");
 var Vspan = document.getElementsByClassName("close")[0];
 var Lspan = document.getElementsByClassName("close")[1];
 var Mspan = document.getElementsByClassName("close")[2];
+var musicCheck = document.getElementById("music");
+var sfxCheck = document.getElementById("sfx");
 var markBox;
 var markBoxV = false;
 let difficultLvl = 1;
@@ -16,15 +18,34 @@ let score = 0;
 let OneCount = 0;
 let TwoCount = 0;
 let ThreeCount = 0;
-var ExplosionSFX = new Audio;
-var FlipSFX = document.createElement('audio');
+var ExplosionSFXog = new Audio;
+var FlipSFXog = document.createElement('audio');
 
-FlipSFX.src = "./Sounds/Flip.mp3";
-ExplosionSFX.src = "./Sounds/Explosion.mp3";
+FlipSFXog.src = "./Sounds/Flip.mp3";
+ExplosionSFXog.src = "./Sounds/Explosion.mp3";
 
 placar.setAttribute("class", "placar");
 var text = document.createTextNode(score);
 placar.appendChild(text);
+
+function sound(type)
+{
+    if(type == "sfxF" && sfxCheck.checked == true)
+    {
+        let FlipSFX = FlipSFXog.cloneNode();
+        FlipSFX.play();
+    }
+    if(type == "sfxE" && sfxCheck.checked == true)
+    {
+        let ExplosionSFX = ExplosionSFXog.cloneNode();
+        ExplosionSFX.play();
+    }
+    if(type == "music" && musicCheck.checked == true)
+    {
+        let FlipSFX = FlipSFXog.cloneNode();
+        FlipSFX.play();
+    }
+}
 
 function difficultCheck()
 {
@@ -195,11 +216,11 @@ function flip(e)
                 cardsF = 0;
                 difficultLvl = 1;
                 Lmodal.style.display = "block";
-                ExplosionSFX.play();
+                sound("sfxE");
             }
             if(e.target.textContent == 1)
             {
-                FlipSFX.play();
+                sound("sfxF");
                 score += 1;
                 cardsF += 1;
                 OneCount -= 1;
@@ -207,7 +228,7 @@ function flip(e)
             }
             if(e.target.textContent == 2)
             {
-                FlipSFX.play();
+                sound("sfxF");
                 score += 2;
                 cardsF += 1;
                 TwoCount -= 1;
@@ -215,7 +236,7 @@ function flip(e)
             }
             if(e.target.textContent == 3)
             {
-                FlipSFX.play();
+                sound("sfxF");
                 score += 3;
                 cardsF += 1;
                 ThreeCount -= 1;
@@ -231,18 +252,18 @@ function flip(e)
                 cardsF = 0;
                 difficultLvl = 1;
                 Lmodal.style.display = "block";
-                ExplosionSFX.play();
+                sound("sfxE");
             }
             if(e.target.textContent == 1)
             {
-                FlipSFX.play();
+                sound("sfxF");
                 score *= 1;
                 OneCount -= 1;
                 ScoreUpadte();
             }
             if(e.target.textContent == 2)
             {
-                FlipSFX.play();
+                sound("sfxF");
                 score += 2;
                 cardsF += 1;
                 TwoCount -= 1;
@@ -250,7 +271,7 @@ function flip(e)
             }
             if(e.target.textContent == 3)
             {
-                FlipSFX.play();
+                sound("sfxF");
                 score += 3;
                 cardsF += 1;
                 ThreeCount -= 1;

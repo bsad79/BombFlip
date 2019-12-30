@@ -20,6 +20,11 @@ body{
     font-size: 150%;
 }
 
+#menu input{
+    min-height: 5vh;
+    width: 5vh;
+}
+
 #menu button{
     background-color: #4717f6;
     border: solid #e7efdd;
