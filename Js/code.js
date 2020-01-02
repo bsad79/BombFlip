@@ -1,5 +1,4 @@
 var body = document.getElementById("body");
-var placar = document.createElement("div");
 var Tmodal = document.getElementById("Tmodal");
 var Vmodal = document.getElementById("Vmodal");
 var Lmodal = document.getElementById("Lmodal");
@@ -15,6 +14,7 @@ let difficultLvl = 1;
 let grid;
 let cardsF = 0;
 let score = 0;
+var Gmode;
 let OneCount = 0;
 let TwoCount = 0;
 let ThreeCount = 0;
@@ -24,9 +24,33 @@ var FlipSFXog = document.createElement('audio');
 FlipSFXog.src = "./Sounds/Flip.mp3";
 ExplosionSFXog.src = "./Sounds/Explosion.mp3";
 
+var placar = document.createElement("div");
 placar.setAttribute("class", "placar");
-var text = document.createTextNode(score);
-placar.appendChild(text);
+
+function gameMode(mode)
+{
+    if(mode == "timer" && score == 0)
+    {
+        score = 90;
+    }
+
+    var text = document.createTextNode(score);
+    placar.appendChild(text);
+    body.appendChild(placar);
+}
+
+setInterval( function()
+{
+    if(Gmode == "timer" && Vmodal.style.display !== "block" && Lmodal.style.display !== "block" &&  score !== 0)
+    {
+        score -= 1;
+        ScoreUpadte();
+        if(score == 0)
+        {
+            Lmodal.style.display = "block";
+        }
+    }
+},1000)
 
 function sound(type)
 {
@@ -257,7 +281,14 @@ function flip(e)
             if(e.target.textContent == 1)
             {
                 sound("sfxF");
-                score *= 1;
+                if(Gmode == "timer")
+                {
+                    score += 1;
+                }
+                else
+                {
+                    score *= 1;
+                }
                 OneCount -= 1;
                 ScoreUpadte();
             }
@@ -572,15 +603,18 @@ function tableMake()
 
 function tableRemove()
 {
+    placar.removeChild(placar.firstChild)
+    gameMode(Gmode);
     table.parentNode.removeChild(table);
     tableMake();
 }
 
-function gameStart()
+function gameStart(mode)
 {
+    Gmode = mode;
     let menu = document.getElementById("menu");
     menu.parentNode.removeChild(menu);
-    body.appendChild(placar);
+    gameMode(mode);
 
     difficultCheck();
     tableMake();

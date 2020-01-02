@@ -14,16 +14,16 @@
         <div id="Vmodal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Você Ganhou!</p>
-                <p>Dificuldade Aumentada.</p>
+                <p>You Win!</p>
+                <p>Difficulty Increased.</p>
             </div>
         </div>
 
         <div id="Lmodal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <p>Você Perdeu!</p>
-                <p>Pontuação zerada.</p>
+                <p>You Lose!</p>
+                <p>Game Reset.</p>
             </div>
         </div>
 
@@ -47,6 +47,7 @@
             <div class="modal-content">
                 <span class="close" onclick="tmodalClose()">&times;</span>
                 <h1>How to play</h1>
+                <h3>Classic Mode</h3>
                 <p>BombFlip is a game in wich you flip over cards to find numbers hidden beneath them.</p>
                 <p>The cards are hiding the numbers 1 through 3... and bombs as well.</p>
                 <p>The first number you flip over will give you that many points.</p>
@@ -69,13 +70,30 @@
                     row or column.</p>
                 <p>In the same way, you can tell how many bombs are hidden in the row or column.</p>
                 <p>Consider the hidden number totals and the bombs totals carefully as you flip over panels.</p>
+                <h3>Timer Mode</h3>
+                <p>In this mode you will have a timer that will show how much time you have left before the end 
+                    of the game.</p>
+                <p>The game starts with 90 seconds, you can increase the time by flipping cards.</p>
+                <p>The time will increase based on the number of the card flipped.</p>
+                <p>If it's a 1, your total time will be increased by 1 second.</p>
+                <p>If it's a 2, it will be increased by 2 seconds.</p>
+                <p>And for a 3, 3 seconds.</p>
+                <p>If you flip a bomb, game over. When that happens, you'll go back at the starting point.</p>
+                <p>Once you've found all the hidden 2 and 3 cards, you've cleared the game and will advance to the 
+                    next level of difficulty.
+                </p>
+                <p>The timer will maintain the time left through the difficulty levels, so be quick!</p>
             </div>
         </div>
 
         <div id="menu">
             <h1>BombFlip</h1>
 
-            <button onclick="gameStart()">Play</button>
+            <button onclick="gameStart('classic')">Classic Mode</button>
+
+            <br><br>
+
+            <button onclick="gameStart('timer')">Timer Mode</button>
 
             <br><br>
 
