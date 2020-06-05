@@ -26,6 +26,9 @@ var FlipSFXog2 = document.createElement('audio');
 var channel = 1;
 var played = false;
 
+
+screen.orientation.lock("portrait");
+
 FlipSFXog.src = "./Sounds/Flip.mp3";
 FlipSFXog2.src = "./Sounds/Flip.mp3";
 ExplosionSFXog.src = "./Sounds/Explosion.mp3";
