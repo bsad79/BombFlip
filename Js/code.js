@@ -25,9 +25,7 @@ var FlipSFXog = document.createElement('audio');
 var FlipSFXog2 = document.createElement('audio');
 var channel = 1;
 var played = false;
-
-
-screen.orientation.lock("portrait");
+var onScreen = false;
 
 FlipSFXog.src = "./Sounds/Flip.mp3";
 FlipSFXog2.src = "./Sounds/Flip.mp3";
@@ -116,23 +114,34 @@ function tmodalClose()
 
 function vmodalClose()
 {
-    Vmodal.style.display = "none";
-    Vmodal.style.display = "none";
-    difficultLvl += 1;
-    difficultCheck();
-    tableRemove();
+    if(onScreen == false){
+        setTimeout(function(){
+            Vmodal.style.display = "none";
+            difficultLvl += 1;
+            difficultCheck();
+            tableRemove();
+            onScreen = false;
+        }, 1000);
+    }
+    onScreen = true;
 }
 
 function lmodalClose()
 {
-    Lmodal.style.display = "none";
-    difficultLvl = 1;
-    OneCount = 0;
-    ScoreUpadte();
-    TwoCount = 0;
-    ThreeCount = 0;
-    difficultCheck();
-    tableRemove();
+    if(onScreen == false){
+        setTimeout(function(){
+            Lmodal.style.display = "none";
+            difficultLvl = 1;
+            OneCount = 0;
+            ScoreUpadte();
+            TwoCount = 0;
+            ThreeCount = 0;
+            difficultCheck();
+            tableRemove();
+            onScreen = false;
+        }, 1000);
+    }
+    onScreen = true;
 }
 
 Mspan.onclick = function()
