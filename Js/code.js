@@ -144,7 +144,7 @@ function flip(e)
         {          
             for (let i = 0; i < e.target.childNodes.length; i++)
             {
-                if(e.target.childNodes[i].className == "mb")
+                if(e.target.childNodes[i].className == "mb spriteText")
                 {
                     e.target.removeChild(e.target.childNodes[i]);
                     i = -1;
@@ -164,7 +164,7 @@ function flip(e)
         {          
             for (let i = 0; i < e.target.childNodes.length; i++)
             {
-                if(e.target.childNodes[i].className == "m1")
+                if(e.target.childNodes[i].className == "m1 spriteText")
                 {
                     e.target.removeChild(e.target.childNodes[i]);
                     i = -1;
@@ -175,7 +175,7 @@ function flip(e)
             {
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
-                div.setAttribute("class", "m1");
+                div.setAttribute("class", "m1 spriteText");
                 e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
@@ -184,7 +184,7 @@ function flip(e)
         {          
             for (let i = 0; i < e.target.childNodes.length; i++)
             {
-                if(e.target.childNodes[i].className == "m2")
+                if(e.target.childNodes[i].className == "m2 spriteText")
                 {
                     e.target.removeChild(e.target.childNodes[i]);
                     i = -1;
@@ -195,7 +195,7 @@ function flip(e)
             {
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
-                div.setAttribute("class", "m2");
+                div.setAttribute("class", "m2 spriteText");
                 e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
@@ -204,7 +204,7 @@ function flip(e)
         {          
             for (let i = 0; i < e.target.childNodes.length; i++)
             {
-                if(e.target.childNodes[i].className == "m3")
+                if(e.target.childNodes[i].className == "m3 spriteText")
                 {
                     e.target.removeChild(e.target.childNodes[i]);
                     i = -1;
@@ -215,7 +215,7 @@ function flip(e)
             {
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
-                div.setAttribute("class", "m3");
+                div.setAttribute("class", "m3 spriteText");
                 e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
@@ -229,13 +229,12 @@ function flip(e)
             e.target.removeChild(e.target.firstChild);
         }
         e.target.appendChild(backup);
-        e.target.setAttribute("class", "flipped");
         e.target.setAttribute("onclick", "");
         if(cardsF == 0)
         {
             if(e.target.textContent == 0)
             {
-                e.target.setAttribute("class", "Fbomb spriteText");
+                e.target.setAttribute("class", "Fbomb spriteText flipped");
                 score = 0;
                 cardsF = 0;
                 difficultLvl = 1;
@@ -244,6 +243,7 @@ function flip(e)
             }
             if(e.target.textContent == 1)
             {
+                e.target.setAttribute("class", "card1 spriteText flipped");
                 sound("sfxF");
                 score += 1;
                 cardsF += 1;
@@ -252,6 +252,7 @@ function flip(e)
             }
             if(e.target.textContent == 2)
             {
+                e.target.setAttribute("class", "card2 spriteText flipped");
                 sound("sfxF");
                 score += 2;
                 cardsF += 1;
@@ -260,6 +261,7 @@ function flip(e)
             }
             if(e.target.textContent == 3)
             {
+                e.target.setAttribute("class", "card3 spriteText flipped");
                 sound("sfxF");
                 score += 3;
                 cardsF += 1;
@@ -271,7 +273,7 @@ function flip(e)
         {
             if(e.target.textContent == 0)
             {
-                e.target.setAttribute("class", "Fbomb spriteText");
+                e.target.setAttribute("class", "Fbomb spriteText flipped");
                 score = 0;
                 cardsF = 0;
                 difficultLvl = 1;
@@ -280,6 +282,7 @@ function flip(e)
             }
             if(e.target.textContent == 1)
             {
+                e.target.setAttribute("class", "card1 spriteText flipped");
                 sound("sfxF");
                 if(Gmode == "timer")
                 {
@@ -294,6 +297,7 @@ function flip(e)
             }
             if(e.target.textContent == 2)
             {
+                e.target.setAttribute("class", "card2 spriteText flipped");
                 sound("sfxF");
                 score += 2;
                 cardsF += 1;
@@ -302,6 +306,7 @@ function flip(e)
             }
             if(e.target.textContent == 3)
             {
+                e.target.setAttribute("class", "card3 spriteText flipped");
                 sound("sfxF");
                 score += 3;
                 cardsF += 1;
@@ -318,7 +323,7 @@ function markWindow(e)
     if(markBoxV == true)
     {
         markBox.removeChild(markBox.firstChild)
-        markBox.setAttribute("class", "mark");
+        markBox.setAttribute("class", "mark spriteText");
         markBoxV = false;
     }
     else
@@ -334,11 +339,19 @@ function mark(e)
     markBox.appendChild(text);
     if(e.target.textContent == 0)
     {
-        markBox.setAttribute("class", "markSelcted Mbomb");
+        markBox.setAttribute("class", "markSelcted Mbomb spriteText");
     }
-    else
+    if(e.target.textContent == 1)
     {
-        markBox.setAttribute("class", "markSelcted");
+        markBox.setAttribute("class", "markSelcted M1 spriteText");
+    }
+    if(e.target.textContent == 2)
+    {
+        markBox.setAttribute("class", "markSelcted M2 spriteText");
+    }
+    if(e.target.textContent == 3)
+    {
+        markBox.setAttribute("class", "markSelcted M3 spriteText");
     }
     markBoxV = true;
 }
@@ -474,7 +487,7 @@ function tableMake()
                 if(n==(grid-1))
                 {
                     let td = document.createElement("td");
-                    td.setAttribute("class", "mark");
+                    td.setAttribute("class", "mark spriteText");
                     td.setAttribute("onclick", "markWindow(event)");
                     tr.appendChild(td);
                 }

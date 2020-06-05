@@ -61,7 +61,7 @@ td{
 }
 
 .box{
-    color: #4717f6;
+    color: transparent;
     background-color: #4717f6;
     height: 7vh;
     width: 10%;
@@ -70,7 +70,6 @@ td{
 }
 
 .flipped{
-    color: #e7efdd;
     background-color: #a239ca;
     height: 7vh;
     width: 10%;
@@ -78,17 +77,6 @@ td{
     border: 0.3vh solid black;
 }
 
-.Fbomb{
-    background-image: url("../Images/bomb.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position-x: center;
-    height: 7vh;
-    width: 10%;
-    color: transparent;
-    background-color: #a239ca;
-    border: 0.5vh solid black;
-}
 
 .aux{
     background-color: #e7efdd;
@@ -101,6 +89,7 @@ td{
     border: 0.3vh solid black;
 }
 
+/*Side Menu Style*/
 .subT{
     background-color: #e7efdd;
     height: auto;
@@ -117,6 +106,11 @@ td{
     text-align: center;
 }
 
+.bomb{
+    background-image: url("../Images/bomb.png");
+    width: 50%;
+}
+
 .mark{
     background-color: #7700ff;
     text-align: center;
@@ -124,15 +118,11 @@ td{
     max-width: 5vh;
     vertical-align: middle;
     background-image: url("../Images/pencil.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position-x: center;
 }
 
 .markSelcted{
     background-color: lightgray;
-    color: rgb(237,28,36);
-    text-align: center;
+    color: transparent;
     border: solid black;
 }
 
@@ -142,7 +132,6 @@ td{
     max-height: 50px;
     max-width: 50%;
     font-size: 200%;
-    color: rgb(237,28,36);
 }
 
 .markOpt:hover{
@@ -153,14 +142,24 @@ td{
     background-color: rgb(121, 116, 116);
 }
 
+/*Marking Menu Icons*/
 .Mbomb{
     background-image: url("../Images/MarkBomb.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position-x: center;
-    color: transparent;
 }
 
+.M1{
+    background-image: url("../Images/Numbers/Red1.png");
+}
+
+.M2{
+    background-image: url("../Images/Numbers/Red2.png");
+}
+
+.M3{
+    background-image: url("../Images/Numbers/Red3.png");
+}
+
+/*Card markings*/
 .mb{
     position: absolute;
     top: 1%;
@@ -168,51 +167,67 @@ td{
     height: 45%;
     width: 45%;
     background-image: url("../Images/MarkBomb.png");
-    color: transparent;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: transparent;
     pointer-events:none
 }
 
 .m1{
+    background-image: url("../Images/Numbers/Red1.png");
     position: absolute;
     top: 1%;
     right: 1%;
-    color: rgb(237,28,36);
+    height: 45%;
+    width: 45%;
     background-color: transparent;
     z-index: 3;
     pointer-events:none
 }
 
 .m2{
+    background-image: url("../Images/Numbers/Red2.png");
     position: absolute;
     bottom: 1%;
     left: 1%;
-    color: rgb(237,28,36);
+    height: 45%;
+    width: 45%;
     background-color: transparent;
     z-index: 3;
     pointer-events:none
 }
 
 .m3{
+    background-image: url("../Images/Numbers/Red3.png");
     position: absolute;
     bottom: 1%;
     right: 1%;
-    color: rgb(237,28,36);
+    height: 45%;
+    width: 45%;
     background-color: transparent;
     z-index: 3;
     pointer-events:none
 }
 
-.bomb{
-    background-image: url("../Images/bomb.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position-x: center;
-    width: 50%;
+/*Card Numbers Sprites*/
+.card1{
+    background-image: url("../Images/Numbers/1.png");
 }
 
+.card2{
+    background-image: url("../Images/Numbers/2.png");
+}
+
+.card3{
+    background-image: url("../Images/Numbers/3.png");
+}
+
+.Fbomb{
+    background-image: url("../Images/bomb.png");
+    height: 7vh;
+    width: 10%;
+    background-color: #a239ca;
+    border: 0.5vh solid black;
+}
+
+/*Popups*/
 .modal{
     display: none; 
     position: fixed;
@@ -262,6 +277,7 @@ td{
     cursor: pointer;
 }
 
+/*Menu Spreites*/
 .cMode{
     background-image: url("../Images/ClassicModeText.png");
 }
@@ -280,6 +296,7 @@ td{
     margin-top: 3%;
 }
 
+/*Sprite base attributes*/
 .spriteText{
     background-repeat: no-repeat;
     background-size: contain;
