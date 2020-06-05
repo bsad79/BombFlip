@@ -20,8 +20,12 @@ let TwoCount = 0;
 let ThreeCount = 0;
 var ExplosionSFXog = new Audio;
 var FlipSFXog = document.createElement('audio');
+var FlipSFXog2 = document.createElement('audio');
+var channel = 1;
+var played = false;
 
 FlipSFXog.src = "./Sounds/Flip.mp3";
+FlipSFXog2.src = "./Sounds/Flip.mp3";
 ExplosionSFXog.src = "./Sounds/Explosion.mp3";
 
 var placar = document.createElement("div");
@@ -54,21 +58,28 @@ setInterval( function()
 
 function sound(type)
 {
-    if(type == "sfxF" && sfxCheck.checked == true)
+    if(type == "sfxF" && sfxCheck.checked == true && channel==1 && played == false)
     {
-        let FlipSFX = FlipSFXog.cloneNode();
-        FlipSFX.play();
+        FlipSFXog.cloneNode().play();
+        channel = 2;
+        played = true;
+    }
+    if(type == "sfxF" && sfxCheck.checked == true && channel==2 && played == false)
+    {
+        FlipSFXog2.cloneNode().play();
+        channel = 1;
+        played = true;
     }
     if(type == "sfxE" && sfxCheck.checked == true)
     {
-        let ExplosionSFX = ExplosionSFXog.cloneNode();
-        ExplosionSFX.play();
-    }
+        ExplosionSFXog.cloneNode().play();
+    }/*
     if(type == "music" && musicCheck.checked == true)
     {
         let FlipSFX = FlipSFXog.cloneNode();
         FlipSFX.play();
-    }
+    }*/
+    played = false;
 }
 
 function difficultCheck()
@@ -98,15 +109,16 @@ function tmodalClose()
     Tmodal.style.display = "none";
 }
 
-Vspan.onclick = function()
+function vmodalClose()
 {
+    Vmodal.style.display = "none";
     Vmodal.style.display = "none";
     difficultLvl += 1;
     difficultCheck();
     tableRemove();
 }
 
-Lspan.onclick = function()
+function lmodalClose()
 {
     Lmodal.style.display = "none";
     difficultLvl = 1;
