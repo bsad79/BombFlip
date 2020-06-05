@@ -97,7 +97,7 @@ function difficultCheck()
     if(difficultLvl > 6)
     {
         body.style.fontSize = "110%";
-        grid = 12;
+        grid = 10;
     }
 }
 
