@@ -155,7 +155,7 @@ function flip(e)
             {
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
-                div.setAttribute("class", "mb");
+                div.setAttribute("class", "mb spriteText");
                 e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
@@ -235,7 +235,7 @@ function flip(e)
         {
             if(e.target.textContent == 0)
             {
-                e.target.setAttribute("class", "Fbomb");
+                e.target.setAttribute("class", "Fbomb spriteText");
                 score = 0;
                 cardsF = 0;
                 difficultLvl = 1;
@@ -271,7 +271,7 @@ function flip(e)
         {
             if(e.target.textContent == 0)
             {
-                e.target.setAttribute("class", "Fbomb");
+                e.target.setAttribute("class", "Fbomb spriteText");
                 score = 0;
                 cardsF = 0;
                 difficultLvl = 1;
@@ -495,7 +495,7 @@ function tableMake()
                     SubTable.setAttribute("class", "subT");
                     SubTable2.setAttribute("class", "subT");
                     trSUM.setAttribute("class", "subTLine");
-                    tdBomb.setAttribute("class", "bomb");
+                    tdBomb.setAttribute("class", "bomb spriteText");
                     tdBomb2.setAttribute("style", "padding: 0;");
 
                     let trc = table.childNodes;
@@ -546,7 +546,7 @@ function tableMake()
                     SubTable.setAttribute("class", "subT");
                     SubTable2.setAttribute("class", "subT");
                     trSUM.setAttribute("class", "subTLine");
-                    tdBomb.setAttribute("class", "bomb");
+                    tdBomb.setAttribute("class", "bomb spriteText");
                     tdBomb2.setAttribute("style", "padding: 0;");
 
                     txt = document.createTextNode(sum);
