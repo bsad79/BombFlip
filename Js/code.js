@@ -12,6 +12,8 @@ var markBox;
 var markBoxV = false;
 let difficultLvl = 1;
 let grid;
+var colorAux = 1;
+var colorChanged = false;
 let cardsF = 0;
 let score = 0;
 var Gmode;
@@ -94,8 +96,8 @@ function difficultCheck()
     }
     if(difficultLvl > 6)
     {
-        body.style.fontSize = "115%";
-        grid = 11;
+        body.style.fontSize = "110%";
+        grid = 12;
     }
 }
 
@@ -168,7 +170,6 @@ function flip(e)
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
                 div.setAttribute("class", "mb spriteText");
-                e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
         }
@@ -188,7 +189,6 @@ function flip(e)
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
                 div.setAttribute("class", "m1 spriteText");
-                e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
         }
@@ -208,7 +208,6 @@ function flip(e)
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
                 div.setAttribute("class", "m2 spriteText");
-                e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
         }
@@ -228,7 +227,6 @@ function flip(e)
                 let div = document.createElement("div");
                 div.appendChild(document.createTextNode(markBox.textContent));
                 div.setAttribute("class", "m3 spriteText");
-                e.target.setAttribute("class", "box");
                 e.target.appendChild(div);
             }
         }
@@ -591,7 +589,16 @@ function tableMake()
                 else
                 {
                     let td = document.createElement("td");
-                    td.setAttribute("class", "box");
+                    if(colorAux == 1 && colorChanged == false){
+                        td.setAttribute("class", "box");
+                        colorAux = 2;
+                        colorChanged = true;
+                    }
+                    if(colorAux == 2 && colorChanged == false){
+                        td.setAttribute("class", "box2");
+                        colorAux = 1;
+                        colorChanged = true;
+                    }
                     td.setAttribute("id", n);
                     var value = valueCalc(Zcount);
                     let txt = document.createTextNode(value);
@@ -617,6 +624,7 @@ function tableMake()
                     td.appendChild(txt);
                     td.setAttribute("onclick", "flip(event)");
                     tr.appendChild(td);
+                    colorChanged = false;
                 } 
             }
         }
