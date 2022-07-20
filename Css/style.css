@@ -19,6 +19,7 @@ body{
     vertical-align: middle;
     font-size: 150%;
     height: 100vh;
+    display: block;
 }
 
 #menu input{
@@ -50,6 +51,15 @@ body{
     vertical-align: middle;
     font-size: 250%;
     min-height: 10vh;
+    min-width: 100vw;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.bb{
+    background-image: url("../Images/MenuArrow.png");
+    flex: 1;
 }
 
 table{
