@@ -27,23 +27,33 @@ var channel = 1;
 var played = false;
 var onScreen = false;
 
+var placar;
+var pontuacao;
+var menu;
+var table;
+
 FlipSFXog.src = "./Sounds/Flip.mp3";
 FlipSFXog2.src = "./Sounds/Flip.mp3";
 ExplosionSFXog.src = "./Sounds/Explosion.mp3";
 
-var placar = document.createElement("div");
-placar.setAttribute("class", "placar");
-
-function gameMode(mode)
+function goBack()
 {
-    if(mode == "timer" && score == 0)
-    {
-        score = 90;
-    }
+    Gmode = "";
+    score = 0;
+    difficultLvl = 1;
+    OneCount = 0;
+    ScoreUpadte();
+    TwoCount = 0;
+    ThreeCount = 0;
+    difficultCheck();
+    tableRemove();
 
-    var text = document.createTextNode(score);
-    placar.appendChild(text);
-    body.appendChild(placar);
+    placar = document.getElementById("placar")
+    console.log(placar)
+ 
+    menu.style.display = "block";
+    placar.parentNode.removeChild(placar);
+    table.parentNode.removeChild(table);
 }
 
 setInterval( function()
@@ -151,9 +161,9 @@ Mspan.onclick = function()
 
 function ScoreUpadte()
 {
-    placar.removeChild(placar.firstChild)
+    pontuacao.removeChild(pontuacao.firstChild)
     var text = document.createTextNode(score);
-    placar.appendChild(text);
+    pontuacao.appendChild(text);
     if(ThreeCount == 0 && TwoCount == 0)
     {
         Vmodal.style.display = "block";
@@ -492,9 +502,37 @@ function valueCalc(Zcount)
     return value;
 }
 
-function tableMake()
+function tableMake(mode)
 {
-    var table = document.createElement("table");
+    //Check game mode
+    if(mode == "timer" && score == 0)
+    {
+        score = 90;
+    }
+
+    //Create score
+    placar = document.createElement("div");
+
+    let bb = document.createElement("div");
+    bb.setAttribute("class", "bb spriteText");
+    bb.setAttribute("onClick", "goBack()");
+
+    var text = document.createElement("div");
+    text.appendChild(document.createTextNode(score));
+    text.setAttribute("style", "flex: 9");
+    text.setAttribute("id", "pontuacao");
+
+    placar.appendChild(bb);
+    placar.appendChild(text);
+    placar.setAttribute("class", "placar");
+    placar.setAttribute("id", "placar");
+
+    body.appendChild(placar);
+    
+    pontuacao = document.getElementById("pontuacao");
+
+    //create table
+    table = document.createElement("table");
     table.setAttribute("id", "table");
 
     for (let i = 0; i < grid; i++)
@@ -648,19 +686,17 @@ function tableMake()
 
 function tableRemove()
 {
-    placar.removeChild(placar.firstChild)
-    gameMode(Gmode);
+    placar.parentNode.removeChild(placar);
     table.parentNode.removeChild(table);
-    tableMake();
+    tableMake(Gmode);
 }
 
 function gameStart(mode)
 {
     Gmode = mode;
-    let menu = document.getElementById("menu");
-    menu.parentNode.removeChild(menu);
-    gameMode(mode);
+    menu = document.getElementById("menu");
+    menu.style.display = "none";
 
     difficultCheck();
-    tableMake();
+    tableMake(mode);
 }
